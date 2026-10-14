@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore handcrafted chocolates, truffles, brownies, gift boxes and more at ChocoHub.">
+    <title>Our Chocolates | ChocoHub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brown: #4b2925;
+            --dark-brown: #2d1917;
+            --milk-chocolate: #80564b;
+            --rose: #d9a6a0;
+            --pink: #f4e1de;
+            --cream: #fffaf4;
+            --white: #ffffff;
+            --text: #483633;
+            --muted: #8d7973;
+            --border: #eadbd3;
+            --gold: #c79b54;
+            --shadow: 0 12px 35px rgba(75, 41, 37, 0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .announcement {
+            padding: 9px 15px;
+            background: var(--dark-brown);
+            color: #fff4e8;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .announcement span {
+            color: #e9c8a5;
+            font-weight: 700;
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 250, 244, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1250px;
+            min-height: 82px;
+            margin: auto;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--brown);
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--rose);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a45d53;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-icon {
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            background: var(--white);
+            color: var(--brown);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -4px;
+            background: var(--rose);
+            color: var(--dark-brown);
+            min-width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            color: var(--brown);
+            font-size: 25px;
+        }
+
+        /* HERO */
+
+        .page-hero {
+            min-height: 390px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 35px;
+            padding: 65px max(5%, calc((100% - 1150px) / 2));
+            background:
+                radial-gradient(circle at 10% 10%, #fff5eb 0, transparent 32%),
+                linear-gradient(125deg, #f8e8df, #f5dcd7 60%, #f8e9de);
+            overflow: hidden;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 17px;
+            color: #a2675c;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-copy h1 {
+            max-width: 620px;
+            margin-bottom: 20px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 5.5vw, 66px);
+            line-height: 1.08;
+            font-weight: 600;
+        }
+
+        .hero-copy h1 em {
+            color: #b97870;
+            font-weight: 500;
+        }
+
+        .hero-copy p {
+            max-width: 500px;
+            margin-bottom: 28px;
+            color: #795f58;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border: 1px solid var(--brown);
+            border-radius: 4px;
+            background: var(--brown);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--brown);
+        }
+
+        .btn-outline:hover {
+            background: var(--brown);
+            color: white;
+        }
+
+        .hero-image-wrap {
+            position: relative;
+            max-width: 450px;
+            width: 100%;
+            justify-self: end;
+        }
+
+        .hero-image {
+            height: 320px;
+            border-radius: 48% 48% 8px 8px;
+            box-shadow: 18px 18px 0 rgba(255, 255, 255, 0.42);
+        }
+
+        .hero-sticker {
+            position: absolute;
+            bottom: 22px;
+            left: -28px;
+            width: 100px;
+            height: 100px;
+            display: grid;
+            place-items: center;
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--brown);
+            color: #fff3e9;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            line-height: 1.4;
+            transform: rotate(-9deg);
+        }
+
+        /* SERVICE STRIP */
+
+        .service-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 26px 5%;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-icon {
+            font-size: 24px;
+        }
+
+        .service-item strong {
+            display: block;
+            font-size: 12px;
+            color: var(--brown);
+        }
+
+        .service-item small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        /* GENERAL SECTION */
+
+        .section {
+            max-width: 1250px;
+            margin: auto;
+            padding: 75px 5%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--brown);
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            margin: 12px auto 0;
+            max-width: 600px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* CATEGORY BUTTONS */
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .category-btn {
+            padding: 10px 19px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: white;
+            color: var(--brown);
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--brown);
+            border-color: var(--brown);
+            color: white;
+        }
+
+        /* FILTER AREA */
+
+        .filter-panel {
+            display: grid;
+            grid-template-columns: minmax(180px, 1.5fr) repeat(3, minmax(130px, 1fr)) auto;
+            align-items: end;
+            gap: 13px;
+            padding: 20px;
+            margin-bottom: 22px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .filter-field label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .filter-field input,
+        .filter-field select {
+            width: 100%;
+            min-height: 43px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 12px;
+            outline: none;
+        }
+
+        .filter-field input:focus,
+        .filter-field select:focus {
+            border-color: var(--rose);
+        }
+
+        .clear-btn {
+            min-height: 43px;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .clear-btn:hover {
+            background: var(--pink);
+        }
+
+        .results-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 22px 0;
+        }
+
+        .results-count {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 6px;
+        }
+
+        .view-toggle button {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            color: var(--brown);
+        }
+
+        .view-toggle button.active {
+            background: var(--brown);
+            color: white;
+        }
+
+        /* PRODUCT GRID */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px 19px;
+        }
+
+        .product-card {
+            position: relative;
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #f0e4dd;
+            border-radius: 7px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .product-image-wrap {
+            position: relative;
+            overflow: hidden;
+            background: #f3e7de;
+        }
+
+        .product-image {
+            height: 235px;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+            padding: 5px 9px;
+            border-radius: 3px;
+            background: var(--brown);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .product-badge.sale {
+            background: #a45d53;
+        }
+
+        .product-badge.new {
+            background: #6d7e61;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 11px;
+            right: 11px;
+            z-index: 3;
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
+            color: var(--brown);
+            font-size: 19px;
+        }
+
+        .wishlist-btn.liked {
+            color: #c64e66;
+        }
+
+        .quick-view-btn {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            padding: 11px;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255, 250, 244, 0.95);
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: 0.25s;
+        }
+
+        .product-card:hover .quick-view-btn,
+        .quick-view-btn:focus {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-info {
+            padding: 17px 15px;
+        }
+
+        .product-category {
+            margin-bottom: 6px;
+            color: #aa7c70;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            margin-bottom: 6px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            min-height: 38px;
+            margin-bottom: 9px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .rating {
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .rating span {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0;
+        }
+
+        .price-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .current-price {
+            color: var(--brown);
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .old-price {
+            color: #aa9992;
+            font-size: 11px;
+            text-decoration: line-through;
+        }
+
+        .weight-label {
+            margin-left: auto;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 8px;
+        }
+
+        .add-cart-btn {
+            min-height: 39px;
+            padding: 9px 10px;
+            border: 1px solid var(--brown);
+            border-radius: 4px;
+            background: var(--brown);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--dark-brown);
+        }
+
+        .order-btn {
+            min-width: 40px;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            color: var(--brown);
+            font-size: 16px;
+        }
+
+        .order-btn:hover {
+            background: #e9f5e8;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            padding: 60px 20px;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .no-results h3 {
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+            color: var(--brown);
+            font-size: 25px;
+        }
+
+        .no-results p {
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* LIST VIEW */
+
+        .product-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .product-grid.list-view .product-card {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+        }
+
+        .product-grid.list-view .product-image {
+            height: 100%;
+            min-height: 245px;
+        }
+
+        .product-grid.list-view .product-info {
+            padding: 25px;
+        }
+
+        .product-grid.list-view .product-description {
+            min-height: 0;
+            max-width: 500px;
+        }
+
+        .product-grid.list-view .quick-view-btn {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* PROMO BANNER */
+
+        .promo-banner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 0.75fr;
+            align-items: center;
+            gap: 30px;
+            margin: 15px 5% 65px;
+            padding: 48px 6%;
+            overflow: hidden;
+            border-radius: 8px;
+            background: var(--brown);
+            color: #fff6ed;
+        }
+
+        .promo-banner::before {
+            content: "♡";
+            position: absolute;
+            right: 20%;
+            top: -70px;
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 250px;
+            line-height: 1;
+        }
+
+        .promo-banner .eyebrow {
+            color: #e4b9a7;
+        }
+
+        .promo-banner h2 {
+            position: relative;
+            margin-bottom: 14px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 45px);
+            line-height: 1.2;
+        }
+
+        .promo-banner p {
+            max-width: 520px;
+            margin-bottom: 22px;
+            color: #ead7cc;
+            font-size: 13px;
+        }
+
+        .promo-banner .btn {
+            position: relative;
+            border-color: #f4d9c8;
+            background: #f4d9c8;
+            color: var(--brown);
+        }
+
+        .promo-image {
+            height: 240px;
+            border-radius: 7px;
+        }
+
+        /* TRUST SECTION */
+
+        .trust-section {
+            padding: 70px 5%;
+            background: #f8ece5;
+        }
+
+        .trust-grid {
+            max-width: 1150px;
+            margin: 35px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .trust-card {
+            padding: 28px 22px;
+            border: 1px solid #ead7ce;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .trust-card .icon {
+            margin-bottom: 13px;
+            font-size: 29px;
+        }
+
+        .trust-card h3 {
+            margin-bottom: 8px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+        }
+
+        .trust-card p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* FAQ */
+
+        .faq-list {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: white;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 18px 20px;
+            border: none;
+            background: transparent;
+            color: var(--brown);
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 18px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-plus {
+            transform: rotate(45deg);
+        }
+
+        .faq-plus {
+            font-size: 21px;
+            transition: 0.2s;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter {
+            padding: 65px 5%;
+            background: #f5e3df;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 10px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 39px);
+        }
+
+        .newsletter p {
+            margin-bottom: 22px;
+            color: #816963;
+            font-size: 13px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 470px;
+            margin: auto;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            min-width: 0;
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #e1c9c1;
+            border-radius: 4px;
+            background: white;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .newsletter-form button {
+            padding: 13px 18px;
+            border: none;
+            border-radius: 4px;
+            background: var(--brown);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .newsletter-message {
+            min-height: 20px;
+            margin-top: 12px;
+            color: var(--brown);
+            font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 55px 5% 20px;
+            background: var(--dark-brown);
+            color: #ead9d0;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 35px;
+        }
+
+        .footer .logo {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: #fff2e8;
+        }
+
+        .footer .logo span {
+            color: #dba8a0;
+        }
+
+        .footer-about {
+            max-width: 280px;
+            color: #bca69d;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .footer h3 {
+            margin-bottom: 17px;
+            color: #fff0e5;
+            font-size: 12px;
+            letter-spacing: 0.7px;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer-links a,
+        .footer-contact p {
+            color: #bca69d;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #664641;
+            border-radius: 50%;
+            color: #f4ded3;
+            font-size: 12px;
+        }
+
+        .social-links a:hover {
+            background: #664641;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #4a302c;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #a88f85;
+            font-size: 10px;
+        }
+
+        /* QUICK VIEW MODAL */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(31, 17, 15, 0.68);
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .quick-modal {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 8px;
+            background: var(--cream);
+        }
+
+        .modal-image {
+            height: 100%;
+            min-height: 380px;
+        }
+
+        .modal-content {
+            padding: 38px 30px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            color: var(--brown);
+            font-size: 20px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 12px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 29px;
+            line-height: 1.2;
+        }
+
+        .modal-content p {
+            margin: 15px 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .modal-details {
+            margin: 18px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 2.1;
+        }
+
+        .modal-price {
+            margin: 12px 0;
+            color: var(--brown);
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .modal-quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .modal-quantity label {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .modal-quantity input {
+            width: 70px;
+            padding: 9px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+        }
+
+        /* CART DRAWER */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            display: none;
+            background: rgba(31, 17, 15, 0.55);
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-drawer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 440px;
+            height: 100%;
+            padding: 25px;
+            overflow-y: auto;
+            background: var(--cream);
+            box-shadow: -10px 0 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-header h2 {
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+        }
+
+        .cart-close {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            color: var(--brown);
+            font-size: 20px;
+        }
+
+        .cart-items {
+            padding: 10px 0;
+        }
+
+        .cart-empty {
+            padding: 45px 10px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .cart-line {
+            display: grid;
+            grid-template-columns: 70px 1fr auto;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-line img {
+            height: 75px;
+            border-radius: 4px;
+        }
+
+        .cart-line h4 {
+            margin-bottom: 5px;
+            color: var(--brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+        }
+
+        .cart-line p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 8px;
+        }
+
+        .cart-quantity button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            background: white;
+            color: var(--brown);
+        }
+
+        .remove-item {
+            align-self: start;
+            border: none;
+            background: none;
+            color: #ad665b;
+            font-size: 11px;
+        }
+
+        .cart-summary {
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+            color: var(--brown);
+            font-size: 13px;
+        }
+
+        .cart-note {
+            margin: 12px 0 18px;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            background: #2e8a50;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .continue-shopping {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 25px;
+            z-index: 500;
+            max-width: calc(100% - 30px);
+            padding: 13px 22px;
+            border-radius: 5px;
+            background: var(--dark-brown);
+            color: white;
+            box-shadow: var(--shadow);
+            font-size: 12px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 15px);
+            transition: 0.25s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* BACK TO TOP */
+
+        .back-top {
+            position: fixed;
+            right: 20px;
+            bottom: 22px;
+            z-index: 80;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: white;
+            color: var(--brown);
+            box-shadow: var(--shadow);
+            font-size: 19px;
+            display: none;
+        }
+
+        .back-top.show {
+            display: block;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 16px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .filter-panel {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .search-field {
+                grid-column: span 2;
+            }
+
+            .clear-btn {
+                grid-column: span 1;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav-container {
+                min-height: 70px;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                order: 3;
+                padding: 15px 0 5px;
+                border-top: 1px solid var(--border);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            .nav-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .page-hero {
+                grid-template-columns: 1fr;
+                padding-top: 48px;
+                padding-bottom: 45px;
+            }
+
+            .hero-image-wrap {
+                justify-self: center;
+                max-width: 380px;
+            }
+
+            .hero-image {
+                height: 280px;
+            }
+
+            .hero-sticker {
+                width: 80px;
+                height: 80px;
+                left: -10px;
+                font-size: 12px;
+            }
+
+            .service-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px 10px;
+            }
+
+            .service-item {
+                justify-content: flex-start;
+            }
+
+            .section {
+                padding-top: 55px;
+                padding-bottom: 55px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px 11px;
+            }
+
+            .product-image {
+                height: 190px;
+            }
+
+            .product-info {
+                padding: 13px 11px;
+            }
+
+            .product-title {
+                font-size: 16px;
+            }
+
+            .product-description {
+                font-size: 10px;
+            }
+
+            .quick-view-btn {
+                opacity: 1;
+                transform: none;
+                padding: 9px;
+            }
+
+            .filter-panel {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                padding: 14px;
+            }
+
+            .search-field {
+                grid-column: span 2;
+            }
+
+            .filter-panel .clear-btn {
+                grid-column: span 2;
+            }
+
+            .product-grid.list-view .product-card {
+                grid-template-columns: 125px 1fr;
+            }
+
+            .product-grid.list-view .product-image {
+                min-height: 100%;
+            }
+
+            .product-grid.list-view .product-info {
+                padding: 13px;
+            }
+
+            .promo-banner {
+                grid-template-columns: 1fr;
+                padding: 35px 7%;
+                margin-bottom: 45px;
+            }
+
+            .promo-image {
+                height: 210px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .quick-modal {
+                grid-template-columns: 1fr;
+                max-width: 440px;
+            }
+
+            .modal-image {
+                height: 230px;
+                min-height: 0;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .product-image {
+                height: 155px;
+            }
+
+            .product-badge {
+                top: 7px;
+                left: 7px;
+                font-size: 8px;
+            }
+
+            .wishlist-btn {
+                top: 6px;
+                right: 6px;
+                width: 30px;
+                height: 30px;
+            }
+
+            .product-info {
+                padding: 11px 9px;
+            }
+
+            .product-title {
+                font-size: 15px;
+            }
+
+            .current-price {
+                font-size: 15px;
+            }
+
+            .weight-label {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .order-btn {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+
+    <div class="announcement">
+        A LITTLE BOX OF HAPPINESS 🍫
+        <span> | FREE DELIVERY OFFERS ON SELECT ORDERS</span>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+
+    <header class="navbar">
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">Choco<span>Hub.</span></a>
+
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">☰</button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Shop Chocolates</a>
+                <a href="#categories">Categories</a>
+                <a href="#our-promise">Our Promise</a>
+                <a href="#faq">FAQs</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="nav-icon" id="wishlistNav"
+                        aria-label="View wishlist" title="Wishlist">
+                    ♡
+                </button>
+
+                <button class="nav-icon" id="openCart"
+                        aria-label="Open shopping cart" title="Shopping cart">
+                    🛍
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO SECTION -->
+
+        <section class="page-hero">
+
+            <div class="hero-copy">
+                <span class="eyebrow">HANDCRAFTED WITH LOVE</span>
+
+                <h1>A little chocolate, a lot of <em>happiness.</em></h1>
+
+                <p>
+                    From silky truffles to rich brownies, discover little
+                    moments of sweetness made for sharing, gifting, and
+                    treating yourself.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#shop" class="btn">EXPLORE ALL CHOCOLATES ↗</a>
+                    <a href="#categories" class="btn btn-outline">BROWSE CATEGORIES</a>
+                </div>
+            </div>
+
+            <div class="hero-image-wrap">
+                <img
+                    class="hero-image"
+                    src="https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                    alt="Beautiful chocolate assortment"
+                    onerror="this.onerror=null;this.src='https://placehold.co/700x600/f0ddd4/4b2925?text=Chocolate+Happiness';">
+
+                <div class="hero-sticker">
+                    Made with<br>♡ love ♡
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SERVICE FEATURES -->
+
+        <section class="service-strip" aria-label="Our shopping benefits">
+
+            <div class="service-item">
+                <span class="service-icon">🍫</span>
+                <div>
+                    <strong>Handpicked Treats</strong>
+                    <small>Chocolate for every mood</small>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <span class="service-icon">🎁</span>
+                <div>
+                    <strong>Thoughtful Gifts</strong>
+                    <small>Made for special moments</small>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <span class="service-icon">💌</span>
+                <div>
+                    <strong>Easy Ordering</strong>
+                    <small>Order directly on WhatsApp</small>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <span class="service-icon">🤎</span>
+                <div>
+                    <strong>Made to Delight</strong>
+                    <small>A sweet little experience</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SHOP SECTION -->
+
+        <section class="section" id="shop">
+
+            <div class="section-heading">
+                <span class="eyebrow">THE CHOCOHUB COLLECTION</span>
+                <h2>Find Your Kind of Sweet</h2>
+                <p>
+                    Whether you love deep dark chocolate, creamy milk
+                    chocolate, or something wonderfully nutty, there's a
+                    little treat waiting for you.
+                </p>
+            </div>
+
+            <!-- CATEGORY FILTERS -->
+
+            <div class="category-list" id="categories">
+
+                <button class="category-btn active" data-category="all">
+                    All Chocolates
+                </button>
+
+                <button class="category-btn" data-category="bars">
+                    Chocolate Bars
+                </button>
+
+                <button class="category-btn" data-category="truffles">
+                    Truffles
+                </button>
+
+                <button class="category-btn" data-category="brownies">
+                    Brownies
+                </button>
+
+                <button class="category-btn" data-category="gift-boxes">
+                    Gift Boxes
+                </button>
+
+                <button class="category-btn" data-category="nuts">
+                    Nutty Treats
+                </button>
+
+                <button class="category-btn" data-category="special">
+                    Special Collection
+                </button>
+
+            </div>
+
+            <!-- SEARCH, PRICE AND SORT FILTERS -->
+
+            <div class="filter-panel">
+
+                <div class="filter-field search-field">
+                    <label for="searchInput">Search Chocolates</label>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Try dark chocolate, brownies..."
+                        autocomplete="off">
+                </div>
+
+                <div class="filter-field">
+                    <label for="priceFilter">Price Range</label>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="0-150">Under ₹150</option>
+                        <option value="150-300">₹150 – ₹300</option>
+                        <option value="300-500">₹300 – ₹500</option>
+                        <option value="500-1000">₹500 – ₹1,000</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="typeFilter">Chocolate Type</label>
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="milk">Milk Chocolate</option>
+                        <option value="dark">Dark Chocolate</option>
+                        <option value="white">White Chocolate</option>
+                        <option value="mixed">Mixed Collection</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="sortFilter">Sort By</label>
+                    <select id="sortFilter">
+                        <option value="featured">Featured</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+
+                <button class="clear-btn" id="clearFilters">Reset Filters ↺</button>
+
+            </div>
+
+            <div class="results-row">
+                <p class="results-count" id="resultsCount" aria-live="polite">
+                    Showing all chocolates
+                </p>
+
+                <div class="view-toggle">
+                    <button id="gridViewBtn" class="active"
+                            aria-label="Grid view" title="Grid view">▦</button>
+                    <button id="listViewBtn"
+                            aria-label="List view" title="List view">☰</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARDS ARE CREATED BY JAVASCRIPT -->
+
+            <div class="product-grid" id="productGrid" aria-live="polite"></div>
+
+        </section>
+
+        <!-- GIFT PROMOTION -->
+
+        <section class="promo-banner">
+
+            <div>
+                <span class="eyebrow">A GIFT THAT SPEAKS FROM THE HEART</span>
+
+                <h2>Sweet surprises for your favourite people.</h2>
+
+                <p>
+                    Birthdays, anniversaries, celebrations, or simply
+                    because you care. Make ordinary days feel special with
+                    a beautiful chocolate gift box.
+                </p>
+
+                <a href="#shop" class="btn">FIND THE PERFECT GIFT ↗</a>
+            </div>
+
+            <img
+                class="promo-image"
+                src="https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=900"
+                alt="Chocolate gift inspiration"
+                onerror="this.onerror=null;this.src='https://placehold.co/700x450/e9d2c7/4b2925?text=Chocolate+Gift+Box';">
+
+        </section>
+
+        <!-- OUR PROMISE -->
+
+        <section class="trust-section" id="our-promise">
+
+            <div class="section-heading">
+                <span class="eyebrow">THE CHOCOHUB DIFFERENCE</span>
+                <h2>More Than Just Chocolate</h2>
+                <p>
+                    Every order should feel like opening a little box of joy.
+                    Here's what we want your ChocoHub experience to feel like.
+                </p>
+            </div>
+
+            <div class="trust-grid">
+
+                <article class="trust-card">
+                    <div class="icon">🍫</div>
+                    <h3>Chocolate You'll Love</h3>
+                    <p>
+                        A thoughtfully selected range of chocolate-inspired
+                        treats for different tastes, cravings, and occasions.
+                    </p>
+                </article>
+
+                <article class="trust-card">
+                    <div class="icon">🎀</div>
+                    <h3>Gift-Worthy Details</h3>
+                    <p>
+                        Turn a simple treat into a meaningful gift with
+                        carefully chosen combinations and a personal message.
+                    </p>
+                </article>
+
+                <article class="trust-card">
+                    <div class="icon">💬</div>
+                    <h3>Personal Ordering</h3>
+                    <p>
+                        Ask about flavours, quantities, gift requests, and
+                        availability before confirming your order.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- FREQUENTLY ASKED QUESTIONS -->
+
+        <section class="section" id="faq">
+
+            <div class="section-heading">
+                <span class="eyebrow">A FEW LITTLE DETAILS</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>
+                    Have a question before placing your order?
+                    Here are a few things you may want to know.
+                </p>
+            </div>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How can I place an order?
+                        <span class="faq-plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Add your favourite items to the cart and choose
+                        the WhatsApp order option. Review the message and
+                        send it to the seller to discuss availability,
+                        delivery, and final confirmation.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I order chocolates as a gift?
+                        <span class="faq-plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. You can ask about gift boxes, special
+                        combinations, and adding a personal message.
+                        Gift wrapping and customisation depend on what
+                        the seller can provide.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are the prices shown final?
+                        <span class="faq-plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        The prices in this sample website are demonstration
+                        prices. Replace them with your actual prices.
+                        Delivery charges, availability, and any additional
+                        costs should be confirmed before payment.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I request a different quantity?
+                        <span class="faq-plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. Use the cart quantity buttons to change the
+                        number of items. You can also mention your preferred
+                        quantity when contacting the seller.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I ask about ingredients or allergens?
+                        <span class="faq-plus">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Please contact the seller before ordering if you
+                        need ingredient, milk, nut, gluten, or other
+                        allergen information. Do not rely on the sample
+                        descriptions on this demonstration page as verified
+                        ingredient or allergy information.
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- NEWSLETTER -->
+
+        <section class="newsletter">
+
+            <span class="eyebrow">A LITTLE SWEETNESS IN YOUR INBOX</span>
+
+            <h2>Stay in the Chocolate Loop</h2>
+
+            <p>
+                Get updates about new treats, seasonal collections,
+                and special offers.
+            </p>
+
+            <form class="newsletter-form" id="newsletterForm">
+                <input
+                    type="email"
+                    id="newsletterEmail"
+                    placeholder="Enter your email address"
+                    aria-label="Email address"
+                    required>
+
+                <button type="submit">KEEP ME UPDATED</button>
+            </form>
+
+            <p class="newsletter-message" id="newsletterMessage"
+               aria-live="polite"></p>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+            <div>
+                <a href="index.html" class="logo">Choco<span>Hub.</span></a>
+
+                <p class="footer-about">
+                    A little corner for chocolate lovers. Discover sweet
+                    treats, thoughtful gifts, and small moments of happiness
+                    with ChocoHub.
+                </p>
+
+                <div class="social-links">
+                    <!-- Replace # with your actual social media links -->
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Pinterest">P</a>
+                </div>
+            </div>
+
+            <div>
+                <h3>EXPLORE</h3>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="products.html">All Chocolates</a>
+                    <a href="#categories">Categories</a>
+                    <a href="#our-promise">Our Promise</a>
+                </div>
+            </div>
+
+            <div>
+                <h3>HELP & INFORMATION</h3>
+                <div class="footer-links">
+                    <a href="#faq">Frequently Asked Questions</a>
+                    <a href="#shop">How to Order</a>
+                    <a href="#faq">Ingredients & Allergens</a>
+                    <a href="#faq">Delivery Information</a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>GET IN TOUCH</h3>
+                <p>Have a sweet question?</p>
+                <p>Contact us to discuss your order.</p>
+                <div class="footer-links" style="margin-top: 12px;">
+                    <a href="#shop">Browse the collection ↗</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="currentYear"></span> ChocoHub. All rights reserved.</p>
+            <p>Made with ♡ for chocolate lovers.</p>
+        </div>
+
+    </footer>
+
+    <!-- QUICK VIEW POPUP -->
+
+    <div class="modal-overlay" id="quickViewModal"
+         role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+        <div class="quick-modal">
+
+            <button class="modal-close" id="closeModal"
+                    aria-label="Close product details">×</button>
+
+            <img class="modal-image" id="modalImage"
+                 src="https://placehold.co/600x600/f0ddd4/4b2925?text=Chocolate"
+                 alt="Selected chocolate">
+
+            <div class="modal-content">
+
+                <span class="eyebrow" id="modalCategory">CHOCOLATE COLLECTION</span>
+
+                <h2 id="modalTitle">Chocolate Name</h2>
+
+                <div class="rating" id="modalRating">★★★★★ <span>Customer favourite</span></div>
+
+                <div class="modal-price" id="modalPrice">₹199</div>
+
+                <p id="modalDescription"></p>
+
+                <div class="modal-details">
+                    <div>♡ Selected for chocolate lovers</div>
+                    <div>🎁 Ask about gift packaging</div>
+                    <div>💬 Confirm availability before payment</div>
+                </div>
+
+                <div class="modal-quantity">
+                    <label for="modalQuantity">Quantity</label>
+                    <input type="number" id="modalQuantity" min="1" max="50" value="1">
+                </div>
+
+                <button class="btn" id="modalAddCart" style="width: 100%;">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CART DRAWER -->
+
+    <div class="cart-overlay" id="cartOverlay">
+
+        <aside class="cart-drawer"
+               role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+
+            <div class="cart-header">
+                <h2 id="cartTitle">Your Sweet Cart</h2>
+                <button class="cart-close" id="closeCart"
+                        aria-label="Close cart">×</button>
+            </div>
+
+            <div class="cart-items" id="cartItems"></div>
+
+            <div class="cart-summary">
+
+                <div class="cart-total-row">
+                    <span>Subtotal</span>
+                    <strong id="cartSubtotal">₹0</strong>
+                </div>
+
+                <div class="cart-total-row">
+                    <span>Delivery</span>
+                    <span>Confirm with seller</span>
+                </div>
+
+                <p class="cart-note">
+                    Delivery fees and product availability must be confirmed.
+                    No payment is taken on this demonstration page.
+                </p>
+
+                <button class="checkout-btn" id="whatsappCheckout">
+                    ORDER THROUGH WHATSAPP ↗
+                </button>
+
+                <button class="continue-shopping" id="continueShopping">
+                    CONTINUE SHOPPING
+                </button>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- TOAST MESSAGE -->
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <button class="back-top" id="backTop"
+            aria-label="Back to top" title="Back to top">↑</button>
+
+    <script>
+        /* =====================================================
+           CHOCOHUB PRODUCT DATA
+
+           These products and prices are sample information.
+           Change them to match the chocolates you actually sell.
+        ===================================================== */
+
+        const products = [
+            {
+                id: 1,
+                name: "Classic Dark Chocolate",
+                category: "bars",
+                type: "dark",
+                price: 149,
+                oldPrice: 179,
+                weight: "80 g",
+                rating: 4.9,
+                reviews: 28,
+                badge: "Bestseller",
+                image: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A rich chocolate treat for those who enjoy a deep cocoa flavour.",
+                featured: 1
+            },
+            {
+                id: 2,
+                name: "Creamy Milk Chocolate",
+                category: "bars",
+                type: "milk",
+                price: 129,
+                oldPrice: 0,
+                weight: "80 g",
+                rating: 4.8,
+                reviews: 34,
+                badge: "",
+                image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A classic milk chocolate option for a comforting sweet moment.",
+                featured: 2
+            },
+            {
+                id: 3,
+                name: "Chocolate Truffle Box",
+                category: "truffles",
+                type: "mixed",
+                price: 299,
+                oldPrice: 349,
+                weight: "6 pieces",
+                rating: 5.0,
+                reviews: 19,
+                badge: "Popular",
+                image: "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A selection of chocolate truffle-inspired bites for a special treat.",
+                featured: 3
+            },
+            {
+                id: 4,
+                name: "Fudgy Chocolate Brownie",
+                category: "brownies",
+                type: "dark",
+                price: 99,
+                oldPrice: 0,
+                weight: "1 piece",
+                rating: 4.7,
+                reviews: 16,
+                badge: "Fresh Pick",
+                image: "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A chocolate brownie-style treat for your afternoon cravings.",
+                featured: 4
+            },
+            {
+                id: 5,
+                name: "Luxury Chocolate Gift Box",
+                category: "gift-boxes",
+                type: "mixed",
+                price: 599,
+                oldPrice: 699,
+                weight: "12 pieces",
+                rating: 5.0,
+                reviews: 12,
+                badge: "Gift Favourite",
+                image: "https://images.pexels.com/photos/264985/pexels-photo-264985.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A gift-inspired chocolate assortment for birthdays and celebrations.",
+                featured: 5
+            },
+            {
+                id: 6,
+                name: "Almond Chocolate Bites",
+                category: "nuts",
+                type: "milk",
+                price: 199,
+                oldPrice: 229,
+                weight: "100 g",
+                rating: 4.8,
+                reviews: 21,
+                badge: "Nutty Pick",
+                image: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A chocolate-inspired snack idea for fans of almond combinations.",
+                featured: 6
+            },
+            {
+                id: 7,
+                name: "White Chocolate Dreams",
+                category: "bars",
+                type: "white",
+                price: 159,
+                oldPrice: 0,
+                weight: "80 g",
+                rating: 4.6,
+                reviews: 14,
+                badge: "",
+                image: "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A sweet white-chocolate-inspired choice for a different kind of craving.",
+                featured: 7
+            },
+            {
+                id: 8,
+                name: "Chocolate Celebration Box",
+                category: "gift-boxes",
+                type: "mixed",
+                price: 799,
+                oldPrice: 899,
+                weight: "18 pieces",
+                rating: 4.9,
+                reviews: 11,
+                badge: "Premium",
+                image: "https://images.pexels.com/photos/30353752/pexels-photo-30353752.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A larger chocolate assortment idea for sharing with family and friends.",
+                featured: 8
+            },
+            {
+                id: 9,
+                name: "Chocolate Hazelnut Treat",
+                category: "nuts",
+                type: "milk",
+                price: 249,
+                oldPrice: 279,
+                weight: "100 g",
+                rating: 4.8,
+                reviews: 17,
+                badge: "",
+                image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A nutty chocolate combination for people who enjoy rich, sweet flavours.",
+                featured: 9
+            },
+            {
+                id: 10,
+                name: "Mini Brownie Collection",
+                category: "brownies",
+                type: "dark",
+                price: 249,
+                oldPrice: 299,
+                weight: "4 pieces",
+                rating: 4.9,
+                reviews: 23,
+                badge: "Bestseller",
+                image: "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A small collection of brownie-style bites for sharing or gifting.",
+                featured: 10
+            },
+            {
+                id: 11,
+                name: "Chocolate Rose Collection",
+                category: "special",
+                type: "mixed",
+                price: 399,
+                oldPrice: 449,
+                weight: "8 pieces",
+                rating: 4.9,
+                reviews: 9,
+                badge: "Special",
+                image: "https://images.pexels.com/photos/264985/pexels-photo-264985.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A romantic gift-inspired collection for anniversaries and thoughtful surprises.",
+                featured: 11
+            },
+            {
+                id: 12,
+                name: "Mini Chocolate Bar Set",
+                category: "special",
+                type: "mixed",
+                price: 349,
+                oldPrice: 399,
+                weight: "5 pieces",
+                rating: 4.7,
+                reviews: 13,
+                badge: "New",
+                image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=700",
+                description: "A selection-style set for anyone who wants to explore different chocolate options.",
+                featured: 12
+            }
+        ];
+
+        /*
+          IMPORTANT:
+          Replace this with your actual WhatsApp number, including
+          country code but without +, spaces, or dashes.
+
+          Example format for an Indian number: 919876543210
+        */
+        const WHATSAPP_NUMBER = "91YOURNUMBER";
+
+        /* =====================================================
+           PAGE STATE
+        ===================================================== */
+
+        let activeCategory = "all";
+        let activeView = "grid";
+        let currentQuickViewProduct = null;
+        let cart = [];
+        let wishlist = [];
+
+        const productGrid = document.getElementById("productGrid");
+        const searchInput = document.getElementById("searchInput");
+        const priceFilter = document.getElementById("priceFilter");
+        const typeFilter = document.getElementById("typeFilter");
+        const sortFilter = document.getElementById("sortFilter");
+        const resultsCount = document.getElementById("resultsCount");
+        const cartCount = document.getElementById("cartCount");
+        const cartOverlay = document.getElementById("cartOverlay");
+        const cartItems = document.getElementById("cartItems");
+        const cartSubtotal = document.getElementById("cartSubtotal");
+        const toast = document.getElementById("toast");
+
+        /* =====================================================
+           HELPERS
+        ===================================================== */
+
+        function formatPrice(amount) {
+            return "₹" + Number(amount).toLocaleString("en-IN");
+        }
+
+        function getProduct(id) {
+            return products.find(product => product.id === Number(id));
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, function(character) {
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                };
+
+                return entities[character];
+            });
+        }
+
+        function categoryLabel(category) {
+            const labels = {
+                bars: "Chocolate Bars",
+                truffles: "Truffles",
+                brownies: "Brownies",
+                "gift-boxes": "Gift Boxes",
+                nuts: "Nutty Treats",
+                special: "Special Collection"
+            };
+
+            return labels[category] || "Chocolate";
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            clearTimeout(showToast.timer);
+
+            showToast.timer = setTimeout(function() {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+        function safeImageFallback(image) {
+            image.onerror = null;
+            image.src = "https://placehold.co/600x500/f0ddd4/4b2925?text=ChocoHub";
+        }
+
+        /* =====================================================
+           PRODUCT FILTERING AND SORTING
+        ===================================================== */
+
+        function getFilteredProducts() {
+            let filtered = [...products];
+
+            if (activeCategory === "wishlist") {
+                filtered = filtered.filter(product => wishlist.includes(product.id));
+            } else if (activeCategory !== "all") {
+                filtered = filtered.filter(product => product.category === activeCategory);
+            }
+
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            if (searchTerm) {
+                filtered = filtered.filter(product => {
+                    const searchableText = [
+                        product.name,
+                        product.description,
+                        product.category,
+                        product.type,
+                        categoryLabel(product.category)
+                    ].join(" ").toLowerCase();
+
+                    return searchableText.includes(searchTerm);
+                });
+            }
+
+            const priceRange = priceFilter.value;
+
+            if (priceRange !== "all") {
+                const [minimum, maximum] = priceRange.split("-").map(Number);
+
+                filtered = filtered.filter(product => {
+                    return product.price >= minimum && product.price <= maximum;
+                });
+            }
+
+            const selectedType = typeFilter.value;
+
+            if (selectedType !== "all") {
+                filtered = filtered.filter(product => product.type === selectedType);
+            }
+
+            switch (sortFilter.value) {
+                case "low-high":
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+
+                case "high-low":
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+
+                case "name":
+                    filtered.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+
+                case "rating":
+                    filtered.sort((a, b) => b.rating - a.rating);
+                    break;
+
+                default:
+                    filtered.sort((a, b) => a.featured - b.featured);
+            }
+
+            return filtered;
+        }
+
+        /* =====================================================
+           RENDER PRODUCT CARDS
+        ===================================================== */
+
+        function renderProducts() {
+            const filteredProducts = getFilteredProducts();
+
+            productGrid.classList.toggle("list-view", activeView === "list");
+
+            if (activeCategory === "wishlist") {
+                resultsCount.textContent =
+                    "Showing " + filteredProducts.length + " wishlist item(s)";
+            } else {
+                resultsCount.textContent =
+                    "Showing " + filteredProducts.length + " of " +
+                    products.length + " chocolates";
+            }
+
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No chocolates found ♡</h3>
+                        <p>
+                            Try another search term or clear your filters
+                            to explore the collection.
+                        </p>
+                        <button class="btn" id="emptyResetButton">
+                            SHOW ALL CHOCOLATES
+                        </button>
+                    </div>
+                `;
+
+                document.getElementById("emptyResetButton").addEventListener(
+                    "click",
+                    resetFilters
+                );
+
+                return;
+            }
+
+            productGrid.innerHTML = filteredProducts.map(product => {
+                const isLiked = wishlist.includes(product.id);
+                const badgeClass = product.badge === "New"
+                    ? "new"
+                    : product.oldPrice > product.price
+                        ? "sale"
+                        : "";
+
+                const badgeHTML = product.badge
+                    ? `<span class="product-badge ${badgeClass}">
+                        ${escapeHTML(product.badge)}
+                       </span>`
+                    : "";
+
+                const oldPriceHTML = product.oldPrice > product.price
+                    ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>`
+                    : "";
+
+                const stars = "★".repeat(Math.round(product.rating)) +
+                              "☆".repeat(5 - Math.round(product.rating));
+
+                return `
+                    <article class="product-card">
+
+                        <div class="product-image-wrap">
+                            ${badgeHTML}
+
+                            <button
+                                class="wishlist-btn ${isLiked ? "liked" : ""}"
+                                data-wishlist="${product.id}"
+                                aria-label="${isLiked ? "Remove from" : "Add to"} wishlist"
+                                title="Wishlist">
+                                ${isLiked ? "♥" : "♡"}
+                            </button>
+
+                            <img
+                                class="product-image"
+                                src="${escapeHTML(product.image)}"
+                                alt="${escapeHTML(product.name)}"
+                                loading="lazy"
+                                onerror="safeImageFallback(this)">
+
+                            <button class="quick-view-btn"
+                                    data-quick-view="${product.id}">
+                                QUICK VIEW +
+                            </button>
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-category">
+                                ${escapeHTML(categoryLabel(product.category))}
+                            </div>
+
+                            <h3 class="product-title">
+                                ${escapeHTML(product.name)}
+                            </h3>
+
+                            <p class="product-description">
+                                ${escapeHTML(product.description)}
+                            </p>
+
+                            <div class="rating" aria-label="${product.rating} out of 5">
+                                ${stars}
+                                <span>${product.rating.toFixed(1)} (${product.reviews})</span>
+                            </div>
+
+                            <div class="price-row">
+                                <span class="current-price">
+                                    ${formatPrice(product.price)}
+                                </span>
+
+                                ${oldPriceHTML}
+
+                                <span class="weight-label">
+                                    ${escapeHTML(product.weight)}
+                                </span>
+                            </div>
+
+                            <div class="product-actions">
+                                <button class="add-cart-btn"
+                                        data-add-cart="${product.id}">
+                                    ADD TO CART +
+                                </button>
+
+                                <button class="order-btn"
+                                        data-direct-order="${product.id}"
+                                        aria-label="Order ${escapeHTML(product.name)}"
+                                        title="Order through WhatsApp">
+                                    ↗
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+                `;
+            }).join("");
+        }
+
+        /* =====================================================
+           CATEGORY BUTTONS
+        ===================================================== */
+
+        document.querySelectorAll(".category-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                activeCategory = this.dataset.category;
+
+                document.querySelectorAll(".category-btn").forEach(item => {
+                    item.classList.toggle("active", item === this);
+                });
+
+                renderProducts();
+            });
+        });
+
+        /* =====================================================
+           SEARCH AND FILTER EVENTS
+        ===================================================== */
+
+        searchInput.addEventListener("input", renderProducts);
+        priceFilter.addEventListener("change", renderProducts);
+        typeFilter.addEventListener("change", renderProducts);
+        sortFilter.addEventListener("change", renderProducts);
+
+        function resetFilters() {
+            activeCategory = "all";
+            searchInput.value = "";
+            priceFilter.value = "all";
+            typeFilter.value = "all";
+            sortFilter.value = "featured";
+
+            document.querySelectorAll(".category-btn").forEach(button => {
+                button.classList.toggle(
+                    "active",
+                    button.dataset.category === "all"
+                );
+            });
+
+            renderProducts();
+        }
+
+        document.getElementById("clearFilters").addEventListener(
+            "click",
+            resetFilters
+        );
+
+        /* =====================================================
+           GRID AND LIST VIEW
+        ===================================================== */
+
+        document.getElementById("gridViewBtn").addEventListener("click", function() {
+            activeView = "grid";
+
+            this.classList.add("active");
+            document.getElementById("listViewBtn").classList.remove("active");
+
+            renderProducts();
+        });
+
+        document.getElementById("listViewBtn").addEventListener("click", function() {
+            activeView = "list";
+
+            this.classList.add("active");
+            document.getElementById("gridViewBtn").classList.remove("active");
+
+            renderProducts();
+        });
+
+        /* =====================================================
+           WISHLIST
+        ===================================================== */
+
+        function toggleWishlist(productId) {
+            productId = Number(productId);
+
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast("Removed from your wishlist.");
+            } else {
+                wishlist.push(productId);
+                showToast("Added to your wishlist ♡");
+            }
+
+            renderProducts();
+        }
+
+        document.getElementById("wishlistNav").addEventListener("click", function() {
+            activeCategory = "wishlist";
+
+            document.querySelectorAll(".category-btn").forEach(button => {
+                button.classList.remove("active");
+            });
+
+            searchInput.value = "";
+            priceFilter.value = "all";
+            typeFilter.value = "all";
+            sortFilter.value = "featured";
+
+            renderProducts();
+
+            document.getElementById("shop").scrollIntoView({
+                behavior: "smooth"
+            });
+
+            if (wishlist.length === 0) {
+                showToast("Your wishlist is empty. Tap ♡ on a chocolate to save it.");
+            }
+        });
+
+        /* =====================================================
+           ADD TO CART
+        ===================================================== */
+
+        function addToCart(productId, quantity = 1) {
+            const product = getProduct(productId);
+            quantity = Math.floor(Number(quantity));
+
+            if (!product || !Number.isFinite(quantity) || quantity < 1) {
+                showToast("Please choose a valid quantity.");
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    quantity: quantity
+                });
+            }
+
+            updateCart();
+            showToast(product.name + " added to your cart!");
+        }
+
+        function updateCart() {
+            const totalQuantity = cart.reduce(
+                (sum, item) => sum + item.quantity,
+                0
+            );
+
+            cartCount.textContent = totalQuantity;
+
+            const subtotal = cart.reduce((sum, item) => {
+                const product = getProduct(item.id);
+
+                return sum + (product ? product.price * item.quantity : 0);
+            }, 0);
+
+            cartSubtotal.textContent = formatPrice(subtotal);
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <div style="font-size: 42px; margin-bottom: 12px;">🛍</div>
+                        <strong>Your cart is waiting for something sweet.</strong>
+                        <p style="margin-top: 10px;">Add your favourite chocolates to get started.</p>
+                    </div>
+                `;
+
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => {
+                const product = getProduct(item.id);
+
+                if (!product) return "";
+
+                return `
+                    <div class="cart-line">
+
+                        <img
+                            src="${escapeHTML(product.image)}"
+                            alt="${escapeHTML(product.name)}"
+                            onerror="safeImageFallback(this)">
+
+                        <div>
+                            <h4>${escapeHTML(product.name)}</h4>
+                            <p>${formatPrice(product.price)} each</p>
+
+                            <div class="cart-quantity">
+                                <button data-cart-change="${product.id}"
+                                        data-change="-1"
+                                        aria-label="Decrease quantity">−</button>
+
+                                <span>${item.quantity}</span>
+
+                                <button data-cart-change="${product.id}"
+                                        data-change="1"
+                                        aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+
+                        <button class="remove-item"
+                                data-remove-item="${product.id}">
+                            Remove
+                        </button>
+
+                    </div>
+                `;
+            }).join("");
+        }
+
+        /* =====================================================
+           CART OPEN/CLOSE
+        ===================================================== */
+
+        function openCart() {
+            cartOverlay.classList.add("show");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("openCart").addEventListener("click", openCart);
+        document.getElementById("closeCart").addEventListener("click", closeCart);
+        document.getElementById("continueShopping").addEventListener("click", closeCart);
+
+        cartOverlay.addEventListener("click", function(event) {
+            if (event.target === cartOverlay) {
+                closeCart();
+            }
+        });
+
+        /* =====================================================
+           QUICK VIEW
+        ===================================================== */
+
+        function openQuickView(productId) {
+            const product = getProduct(productId);
+
+            if (!product) return;
+
+            currentQuickViewProduct = product;
+
+            document.getElementById("modalImage").src = product.image;
+            document.getElementById("modalImage").alt = product.name;
+            document.getElementById("modalCategory").textContent =
+                categoryLabel(product.category);
+            document.getElementById("modalTitle").textContent = product.name;
+            document.getElementById("modalRating").innerHTML =
+                "★★★★★ <span>" + product.rating.toFixed(1) +
+                " · " + product.reviews + " sample reviews</span>";
+            document.getElementById("modalPrice").textContent =
+                formatPrice(product.price);
+            document.getElementById("modalDescription").textContent =
+                product.description + " Product details and availability should be confirmed with the seller.";
+            document.getElementById("modalQuantity").value = 1;
+
+            document.getElementById("quickViewModal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeQuickView() {
+            document.getElementById("quickViewModal").classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("closeModal").addEventListener("click", closeQuickView);
+
+        document.getElementById("quickViewModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeQuickView();
+            }
+        });
+
+        document.getElementById("modalAddCart").addEventListener("click", function() {
+            if (!currentQuickViewProduct) return;
+
+            const quantityInput = document.getElementById("modalQuantity");
+            const quantity = Math.floor(Number(quantityInput.value));
+
+            if (!Number.isFinite(quantity) || quantity < 1 || quantity > 50) {
+                showToast("Choose a quantity between 1 and 50.");
+                return;
+            }
+
+            addToCart(currentQuickViewProduct.id, quantity);
+            closeQuickView();
+        });
+
+        /* =====================================================
+           PRODUCT BUTTON EVENTS
+
+           Event delegation keeps the product buttons working
+           when filters change or cards are re-rendered.
+        ===================================================== */
+
+        productGrid.addEventListener("click", function(event) {
+            const addButton = event.target.closest("[data-add-cart]");
+            const wishlistButton = event.target.closest("[data-wishlist]");
+            const quickButton = event.target.closest("[data-quick-view]");
+            const orderButton = event.target.closest("[data-direct-order]");
+
+            if (addButton) {
+                addToCart(addButton.dataset.addCart);
+            }
+
+            if (wishlistButton) {
+                toggleWishlist(wishlistButton.dataset.wishlist);
+            }
+
+            if (quickButton) {
+                openQuickView(quickButton.dataset.quickView);
+            }
+
+            if (orderButton) {
+                orderSingleProduct(orderButton.dataset.directOrder);
+            }
+        });
+
+        /* =====================================================
+           CART QUANTITY AND REMOVE EVENTS
+        ===================================================== */
+
+        cartItems.addEventListener("click", function(event) {
+            const changeButton = event.target.closest("[data-cart-change]");
+            const removeButton = event.target.closest("[data-remove-item]");
+
+            if (changeButton) {
+                const productId = Number(changeButton.dataset.cartChange);
+                const change = Number(changeButton.dataset.change);
+                const item = cart.find(cartItem => cartItem.id === productId);
+
+                if (item) {
+                    item.quantity += change;
+
+                    if (item.quantity <= 0) {
+                        cart = cart.filter(cartItem => cartItem.id !== productId);
+                    }
+                }
+
+                updateCart();
+            }
+
+            if (removeButton) {
+                const productId = Number(removeButton.dataset.removeItem);
+
+                cart = cart.filter(item => item.id !== productId);
+
+                updateCart();
+                showToast("Item removed from your cart.");
+            }
+        });
+
+        /* =====================================================
+           WHATSAPP ORDER HELPERS
+        ===================================================== */
+
+        function isWhatsAppNumberConfigured() {
+            return /^\d{10,15}$/.test(WHATSAPP_NUMBER);
+        }
+
+        function openWhatsApp(message) {
+            if (!isWhatsAppNumberConfigured()) {
+                showToast("Please add your real WhatsApp number in the code first.");
+                return;
+            }
+
+            const url = "https://wa.me/" + WHATSAPP_NUMBER +
+                        "?text=" + encodeURIComponent(message);
+
+            window.open(url, "_blank", "noopener,noreferrer");
+        }
+
+        function orderSingleProduct(productId) {
+            const product = getProduct(productId);
+
+            if (!product) return;
+
+            const message =
+                "Hello ChocoHub! I would like to enquire about this product:\n\n" +
+                product.name + "\n" +
+                "Quantity: 1\n" +
+                "Displayed price: " + formatPrice(product.price) + "\n\n" +
+                "Please confirm availability, delivery charges, and final price.";
+
+            openWhatsApp(message);
+        }
+
+        document.getElementById("whatsappCheckout").addEventListener("click", function() {
+            if (cart.length === 0) {
+                showToast("Your cart is empty. Add some chocolates first!");
+                return;
+            }
+
+            const lines = cart.map(item => {
+                const product = getProduct(item.id);
+
+                if (!product) return "";
+
+                return "• " + product.name +
+                    " × " + item.quantity +
+                    " = " + formatPrice(product.price * item.quantity);
+            }).filter(Boolean);
+
+            const subtotal = cart.reduce((sum, item) => {
+                const product = getProduct(item.id);
+
+                return sum + (product ? product.price * item.quantity : 0);
+            }, 0);
+
+            const message =
+                "Hello ChocoHub! I would like to place an order enquiry.\n\n" +
+                lines.join("\n") +
+                "\n\nDisplayed subtotal: " + formatPrice(subtotal) +
+                "\n\nPlease confirm product availability, delivery charges, and the final amount. Thank you!";
+
+            openWhatsApp(message);
+        });
+
+        /* =====================================================
+           FAQ ACCORDION
+        ===================================================== */
+
+        document.querySelectorAll(".faq-question").forEach(button => {
+            button.addEventListener("click", function() {
+                const item = this.closest(".faq-item");
+                const isOpen = item.classList.contains("open");
+
+                document.querySelectorAll(".faq-item").forEach(faq => {
+                    faq.classList.remove("open");
+                });
+
+                if (!isOpen) {
+                    item.classList.add("open");
+                }
+            });
+        });
+
+        /* =====================================================
+           NEWSLETTER DEMO
+
+           This only displays a message. It does not save email
+           addresses because there is no backend connected.
+        ===================================================== */
+
+        document.getElementById("newsletterForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById("newsletterEmail");
+            const message = document.getElementById("newsletterMessage");
+
+            if (!emailInput.checkValidity()) {
+                emailInput.reportValidity();
+                return;
+            }
+
+            message.textContent =
+                "Thank you! The newsletter form is a demo and does not save your email yet.";
+
+            emailInput.value = "";
+        });
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function() {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.textContent = isOpen ? "×" : "☰";
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function() {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        /* =====================================================
+           BACK TO TOP BUTTON
+        ===================================================== */
+
+        const backTop = document.getElementById("backTop");
+
+        window.addEventListener("scroll", function() {
+            backTop.classList.toggle("show", window.scrollY > 450);
+        });
+
+        backTop.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        /* =====================================================
+           KEYBOARD ESCAPE SUPPORT
+        ===================================================== */
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeQuickView();
+                closeCart();
+
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            }
+        });
+
+        /* =====================================================
+           INITIALISE THE PAGE
+        ===================================================== */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        renderProducts();
+        updateCart();
+    </script>
+
+</body>
+</html>
